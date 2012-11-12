@@ -7,7 +7,7 @@ class Object
     oc = JSON.pretty_generate(self, indent: '    ')
       .gsub('{', '@{')
       .gsub('[', '@[')
-      .gsub(/([^a-zA-Z0-9])([0-9]+)/, "\\1@\\2")
+      .gsub(/:\s([0-9]+)/, ": @\\1")
       .gsub(/"([^"]+)"/, '@"\\1"')
   end
 end
