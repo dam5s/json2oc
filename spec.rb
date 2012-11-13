@@ -1,8 +1,7 @@
 require 'rspec'
 require './app'
 
-describe 'Object #to_oc' do
-
+describe 'Object#to_oc' do
   describe 'values in hashes' do
     it 'should handle hashes and strings' do
       {"foo" => "bar"}.to_oc.should == %Q|@{
@@ -70,6 +69,5 @@ describe 'Object #to_oc' do
 ]|
     end
   end
-
-
 end
+
