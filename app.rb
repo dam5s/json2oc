@@ -18,6 +18,11 @@ end
 
 post '/' do
   @json = params[:json]
-  @result = JSON.parse(@json).to_oc
-  haml :result
+
+  begin
+    @result = JSON.parse(@json).to_oc
+    haml :result
+  rescue
+    haml :error
+  end
 end
