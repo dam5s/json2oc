@@ -2,4 +2,4 @@
   %textarea{name: 'json', id: 'json'}=@json
   %input{type: 'submit', value: 'Convert!'}
 
-%textarea{name: 'result', id: 'result'}=@result
+%textarea{name: 'result', id: 'result', rows:@line_count}=@result

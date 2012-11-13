@@ -21,6 +21,7 @@ post '/' do
 
   begin
     @result = JSON.parse(@json).to_oc
+    @line_count = @result.split("\n").size
     haml :result
   rescue
     haml :error
