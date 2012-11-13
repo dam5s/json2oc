@@ -7,8 +7,8 @@ class Object
     oc = JSON.pretty_generate(self, indent: '    ')
       .gsub('{', '@{')
       .gsub('[', '@[')
-      .gsub(/:\s([0-9]+)/, ": @\\1")
-      .gsub(/:\snull/, ": [NSNull null]")
+      .gsub(/(:\s|^\s*)([0-9]+)/, "\\1@\\2")
+      .gsub(/(:\s|^\s*)null/, "\\1[NSNull null]")
       .gsub(/"([^"]+)"/, '@"\\1"')
   end
 end
