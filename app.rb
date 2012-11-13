@@ -14,6 +14,10 @@ class Object
 end
 
 get '/' do
+  expires 60*10, :public
+
+  @json = '{"convert": "JSON", "to": [1, 2, null, "Objective-C"]}'
+  @result = JSON.parse(@json).to_oc
   haml :index
 end
 
