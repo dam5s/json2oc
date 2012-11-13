@@ -8,6 +8,7 @@ class Object
       .gsub('{', '@{')
       .gsub('[', '@[')
       .gsub(/:\s([0-9]+)/, ": @\\1")
+      .gsub(/:\snull/, ": [NSNull null]")
       .gsub(/"([^"]+)"/, '@"\\1"')
   end
 end
