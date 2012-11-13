@@ -38,7 +38,15 @@
         border-radius: 10px;
         border: none;
       }
+      #github {
+        position: absolute;
+        top: 0;
+        right: 0;
+        border: 0;
+      }
   %body
+    %a{href: 'https://github.com/dam5s/json2oc'}
+      %img{id:'github', alt: 'Fork Me on Github!', src:'https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png'}
     %h1 JSON 2 OC
     %h2 a JSON to Objective-C structure converter
     = yield
