@@ -10,6 +10,8 @@ class Object
       .gsub(/(:\s|^\s*)([0-9]+)/, "\\1@\\2")
       .gsub(/(:\s|^\s*)null/, "\\1[NSNull null]")
       .gsub(/"([^"]+)"/, '@"\\1"')
+      .gsub(/(:\s|^\s*)true/, "\\1@YES")
+      .gsub(/(:\s|^\s*)false/, "\\1@NO")
   end
 end
 

@@ -34,6 +34,16 @@ describe 'Object#to_oc' do
     @"bar": @"http://url.com"
 }|
     end
+
+    it 'should handle booleans' do
+      {
+        "foo" => true,
+        "bar" => false
+      }.to_oc.should == %Q|@{
+    @"foo": @YES,
+    @"bar": @NO
+}|
+    end
   end
 
   describe 'values in arrays' do
