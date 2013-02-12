@@ -5,13 +5,14 @@ require 'json'
 class Object
   def to_oc
     oc = JSON.pretty_generate(self, indent: '    ')
-      .gsub('{', '@{')
-      .gsub('[', '@[')
-      .gsub(/(:\s|^\s*)([0-9]+)/, "\\1@\\2")
-      .gsub(/(:\s|^\s*)null/, "\\1[NSNull null]")
-      .gsub(/"([^"]+)"/, '@"\\1"')
-      .gsub(/(:\s|^\s*)true/, "\\1@YES")
-      .gsub(/(:\s|^\s*)false/, "\\1@NO")
+      .gsub('{', '@{')                            # Objects
+      .gsub('[', '@[')                            # Arrays
+      .gsub(/(:\s|^\s*)([0-9]+)/, "\\1@\\2")      # Digits
+      .gsub(/(:\s|^\s*)null/, "\\1[NSNull null]") # Null
+      .gsub(/"([^"]+)"/, '@"\\1"')                # Strings
+      .gsub(/(:\s|^\s*)true/, "\\1@YES")          # true
+      .gsub(/(:\s|^\s*)false/, "\\1@NO")          # false
+      .gsub(/([^,\[\{])$\n/, "\\1,\n")            # trailing comma
   end
 end
 

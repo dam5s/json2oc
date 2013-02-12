@@ -5,7 +5,7 @@ describe 'Object#to_oc' do
   describe 'values in hashes' do
     it 'should handle hashes and strings' do
       {"foo" => "bar"}.to_oc.should == %Q|@{
-    @"foo": @"bar"
+    @"foo": @"bar",
 }|
     end
 
@@ -15,13 +15,13 @@ describe 'Object#to_oc' do
         "bar" => 123.45
       }.to_oc.should == %Q|@{
     @"foo": @12345,
-    @"bar": @123.45
+    @"bar": @123.45,
 }|
     end
 
     it 'should handle null' do
       {"foo" => nil}.to_oc.should == %Q|@{
-    @"foo": [NSNull null]
+    @"foo": [NSNull null],
 }|
     end
 
@@ -31,7 +31,7 @@ describe 'Object#to_oc' do
         "bar" => "http://url.com"
       }.to_oc.should == %Q|@{
     @"foo": @"2012-12-31 00:05:15",
-    @"bar": @"http://url.com"
+    @"bar": @"http://url.com",
 }|
     end
 
@@ -41,7 +41,7 @@ describe 'Object#to_oc' do
         "bar" => false
       }.to_oc.should == %Q|@{
     @"foo": @YES,
-    @"bar": @NO
+    @"bar": @NO,
 }|
     end
   end
@@ -50,7 +50,7 @@ describe 'Object#to_oc' do
     it 'should handle strings' do
       ["foo", "bar"].to_oc.should == %Q|@[
     @"foo",
-    @"bar"
+    @"bar",
 ]|
     end
 
@@ -58,14 +58,14 @@ describe 'Object#to_oc' do
       [12, 34, 56.78].to_oc.should == %Q|@[
     @12,
     @34,
-    @56.78
+    @56.78,
 ]|
     end
 
     it 'should handle null' do
       [nil, nil].to_oc.should == %Q|@[
     [NSNull null],
-    [NSNull null]
+    [NSNull null],
 ]|
     end
 
@@ -75,7 +75,15 @@ describe 'Object#to_oc' do
         "http://url.com"
       ].to_oc.should == %Q|@[
     @"2012-12-31 00:05:15",
-    @"http://url.com"
+    @"http://url.com",
+]|
+    end
+
+    it 'should handle booleans' do
+      [true, false, false].to_oc.should == %Q|@[
+    @YES,
+    @NO,
+    @NO,
 ]|
     end
   end
